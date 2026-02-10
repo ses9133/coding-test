@@ -1,41 +1,32 @@
-import java.io.*;
-import java.util.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.StringTokenizer;
 
 public class Main {
-    public static void main(String[] args) throws IOException {
+      public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        int N = Integer.parseInt(br.readLine());
+        int n = Integer.parseInt(br.readLine());
         StringTokenizer st = new StringTokenizer(br.readLine());
-        int[] A = new int[N];
-        for(int i = 0; i < N; i++) {
-            A[i] = Integer.parseInt(st.nextToken());
+        Set<Integer> set = new HashSet<>();
+        for(int i = 0; i < n; i++) {
+          set.add(Integer.parseInt(st.nextToken()));
         }
-        int M = Integer.parseInt(br.readLine());
-        Arrays.sort(A);
-
+      
+        int m = Integer.parseInt(br.readLine());
         StringTokenizer st2 = new StringTokenizer(br.readLine());
+        StringBuilder sb = new StringBuilder();
 
-        for(int i = 0; i < M; i++) {
-            boolean found = false;
-            int target = Integer.parseInt(st2.nextToken());
-            int start = 0;
-            int end = N - 1;
-            while (start <= end) {
-                int mid = (start + end) / 2;
-                if(A[mid] < target) {
-                    start = mid + 1;
-                } else if (A[mid] > target) {
-                    end = mid - 1;
-                } else {
-                    found = true;
-                    break;
-                }
-            }
-            if(found) {
-                System.out.println(1);
-            } else {
-                System.out.println(0);
-            }
+        for(int i = 0; i < m; i++) {
+          int num = Integer.parseInt(st2.nextToken());
+          if(set.contains(num)) {
+            sb.append("1").append("\n");
+          } else {
+            sb.append("0").append("\n");
+          }
         }
-    }
+        System.out.println(sb.toString());
+    } 
 }
