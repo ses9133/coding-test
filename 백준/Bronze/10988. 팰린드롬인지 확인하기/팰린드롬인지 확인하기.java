@@ -1,23 +1,16 @@
+import java.io.IOException;
 import java.util.Scanner;
 
 public class Main {
-      public static void main(String[] args)  {
-          Scanner sc = new Scanner(System.in);
-          String line = sc.nextLine();
-          boolean isPelindrom = true;
+      public static void main(String[] args) throws IOException {
+        Scanner sc = new Scanner(System.in);
+        String word = sc.next();
+        String reversed = new StringBuilder(word).reverse().toString();
 
-          for(int i = 0; i < line.length() / 2; i++) {
-            int start = i;
-            int end = line.length() - i - 1;
-            if(line.charAt(start) != line.charAt(end)) {
-              isPelindrom = false;
-            }
-          }
-
-          if(isPelindrom) {
-            System.out.println(1);
-          } else {
-            System.out.println(0);
-          }
-      }
+        if(word.equals(reversed)) {
+          System.out.println(1);
+        } else {
+          System.out.println(0);
+        }
+    } 
 }
