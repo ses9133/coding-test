@@ -1,0 +1,7 @@
+SELECT USER_ID, PRODUCT_ID
+FROM ONLINE_SALE
+GROUP BY USER_ID, PRODUCT_ID
+HAVING COUNT(PRODUCT_ID) >= 2
+ORDER BY 1 ASC, 2 DESC;
+-- 사용자끼리 그룹화해서 그 안에서 같은 product_id 2개 이상 있는 회원
+
